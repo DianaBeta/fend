@@ -1,60 +1,49 @@
-/*Emty js object to act as an endpoint for all routes*/
-projectData = {};
+let baseURL=  	'https://api.meaningcloud.com/sentiment-2.1';
 
 const dotenv = require('dotenv');
 dotenv.config();
 console.log(`Your API key is ${process.env.API_KEY}`);
 
 var textapi = process.env.API_KEY;
- 
+
+var bodyParser = require('body-parser')
 var path = require('path')
 const express = require('express')
+var cors = require('cors')
 const mockAPIResponse = require('./mockAPI.js')
 
 const app = express()
 
 app.use(express.static('dist'))
+app.use(cors())
+// to use json
+app.use(bodyParser.json())
+// to use url encoded values
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 
-console.log(__dirname)
+console.log(`DIRNAME: ${__dirname}`)
 
-app.get('/add', function (req, res) {
+app.get('/all', function (req, res) {
     // res.sendFile('dist/index.html')
     res.sendFile(path.resolve('src/client/views/index.html'))
 })
-//POST route: sends the data to the project endpoint
-app.post('.all', function (req, res) {
-    let data = req.body;
-});
+
+getSentiment(baseURL, text, apikey)
+
+//Todo: API CALL
+const getSentiment = async (baseURL, text, key)=>{
+    const res = await fetch(baseURL + text+key)
+}
 // designates what port the app will listen to for incoming requests
 app.listen(8081, function () {
     console.log('Example app listening on port 8081!')
 })
-
-//app.get('/test', function (req, res) {
-//    res.send(mockAPIResponse)
-//})
-
-   // working fetch, above debugging and visualisation of post requests
-   fetch('https://api.meaningcloud.com/sentiment-2.1?key=4bde5610d8cb5b0be96377106b7daf34&lang=en&txt=I%20am%20happy', {
-    method: "POST",
-    /*body: JSON.stringify({
-        key: Client.textapi,
-        lang: "en",
-        verbose: "y",
-        txt: "I am happy"
-
-
-    })*/
+//POST route: sends the data to the project endpoint
+app.post('/api', function (req, res) {
+    console.log('/api called via post request')
+    console.log(req.body.text);
+    res.json(req.body.text);
+    
 })
-.then((res) => {
-    console.log("Request complete! response:", res.json());
-  })
-
-    /*body: JSON.stringify({
-        key: Client.textapi,
-        lang: "en",
-        verbose: "y",
-        txt: "I am happy"
-
-
-    })*/
