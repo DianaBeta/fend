@@ -1,10 +1,13 @@
+const fetch = require("node-fetch");
 let baseURL=  	'https://api.meaningcloud.com/sentiment-2.1';
 
 const dotenv = require('dotenv');
 dotenv.config();
-console.log(`Your API key is ${process.env.API_KEY}`);
-
 var textapi = process.env.API_KEY;
+
+console.log(`Your API key is ${textapi}`);
+
+console.log(textapi);
 
 var bodyParser = require('body-parser')
 var path = require('path')
@@ -30,11 +33,18 @@ app.get('/all', function (req, res) {
     res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
-getSentiment(baseURL, text, apikey)
 
 //Todo: API CALL
 const getSentiment = async (baseURL, text, key)=>{
-    const res = await fetch(baseURL + text+key)
+    
+    const res = await fetch(baseURL+'?of=json&txt='+ text +'&key='+ key + '&lang=en')
+    try{
+        const data=await res.json();
+        console.log(data)
+        return data;
+    } catch(error){
+        console-log("error", error)
+    }
 }
 // designates what port the app will listen to for incoming requests
 app.listen(8081, function () {
@@ -44,6 +54,9 @@ app.listen(8081, function () {
 app.post('/api', function (req, res) {
     console.log('/api called via post request')
     console.log(req.body.text);
+    
+    getSentiment(baseURL, req.body.text, textapi);
     res.json(req.body.text);
+
     
 })
