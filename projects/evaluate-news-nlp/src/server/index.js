@@ -43,7 +43,7 @@ const getSentiment = async (baseURL, text, key)=>{
         console.log(data)
         return data;
     } catch(error){
-        console-log("error", error)
+        console.log("error", error)
     }
 }
 // designates what port the app will listen to for incoming requests
@@ -55,8 +55,12 @@ app.post('/api', function (req, res) {
     console.log('/api called via post request')
     console.log(req.body.text);
     
-    getSentiment(baseURL, req.body.text, textapi);
-    res.json(req.body.text);
+    getSentiment(baseURL, req.body.text, textapi).then(
+        apiResponse => {
+        console.log(apiResponse)
+        res.json(apiResponse);
+    });
+
 
     
 })
