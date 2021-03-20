@@ -8,7 +8,11 @@ function handleSubmit(event) {
 
     console.log("::: Form Submitted :::")
     
-    postData('http://localhost:8081/api', {text: formText});
+    postData('http://localhost:8081/api', {text: formText}).then(
+      function(res) {
+        document.getElementById('results').innerHTML = res.score_tag;
+      }
+    )
     }
 
     const postData = async ( url = '', data = {})=>{
@@ -30,7 +34,9 @@ function handleSubmit(event) {
         }catch(error) {
           console.log("error", error);
         }
+
         
     }
+
 
 export { handleSubmit }

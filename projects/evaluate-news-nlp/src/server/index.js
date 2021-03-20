@@ -37,7 +37,7 @@ app.get('/all', function (req, res) {
 //Todo: API CALL
 const getSentiment = async (baseURL, text, key)=>{
     
-    const res = await fetch(baseURL+'?of=json&txt='+ text +'&key='+ key + '&lang=en')
+    const res = await fetch(baseURL+'?url='+ text +'&key='+ key + '&lang=en')
     try{
         const data=await res.json();
         console.log(data)
