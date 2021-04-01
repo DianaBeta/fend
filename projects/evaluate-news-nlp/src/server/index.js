@@ -5,10 +5,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 var textapi = process.env.API_KEY;
 
-console.log(`Your API key is ${textapi}`);
-
-console.log(textapi);
-
 var bodyParser = require('body-parser')
 var path = require('path')
 const express = require('express')
@@ -25,8 +21,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
 }))
-
-console.log(`DIRNAME: ${__dirname}`)
 
 app.get('/all', function (req, res) {
     // res.sendFile('dist/index.html')

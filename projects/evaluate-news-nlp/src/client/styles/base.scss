@@ -1,17 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-$font-stack: 'Open Sans', sans-serif;
+
+$font-stack: Arial, Helvetica, sans-serif;
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    font: $font-stack;
+    font-family: $font-stack;
+    
+    
 }
 
 main {
     flex: 2;
+    border: solid 2px pink;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+ 
+    
 }
 
 section {
-    max-width: 800px;
+    max-width: 900px;
     margin: 50px auto;
+}
+
+.results{
+    padding:40px; 
+    border: solid 2px pink;
+}
+#results1,#results2,#results3#results4{
+    padding:40px;  
+}
+h2{
+    padding:40px;
 }
