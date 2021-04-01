@@ -11,14 +11,14 @@ function handleSubmit(event) {
     postData('http://localhost:8081/api', {text: formText}).then(
       function(res) {
         if (res.score_tag == "P"){
-          document.getElementById('results1').innerHTML = `score tag: Positive`
+          document.getElementById('results1').innerHTML = `Score tag: Positive`
         }
           if (res.score_tag == "N"){
-            document.getElementById('results1').innerHTML = `score tag: Negative`
+            document.getElementById('results1').innerHTML = `Score tag: Negative`
           };
       
-        document.getElementById('results2').innerHTML = `agreement: ${res.agreement}`;
-        document.getElementById('results3').innerHTML = `confidence: ${res.confidence}`;
+        document.getElementById('results2').innerHTML = `Agreement: ${res.agreement}`;
+        document.getElementById('results3').innerHTML = `Confidence: ${res.confidence}`;
       
       }
     )
