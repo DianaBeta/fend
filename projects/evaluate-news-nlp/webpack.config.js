@@ -14,18 +14,21 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: "./src/client/views/index.html",
-            filename: "./index.html",
+        new GoogleFontsPlugin({
+            fonts: [
+                { family: "Source Sans Pro" },
+                { family: "Open Sans", variants: [ "400", "700italic" ] }
+            ]
+            /* ...options */
         }),
-    new CleanWebpackPlugin({
-        // Simulate the removal of files
-        dry: true,
-        // Write Logs to Console
-        verbose: true,
-        // Automatically remove all unused webpack assets on rebuild
-        cleanStaleWebpackAssets: true,
-        protectWebpackAssets: false
+        new CleanWebpackPlugin({
+            // Simulate the removal of files
+            dry: true,
+            // Write Logs to Console
+            verbose: true,
+            // Automatically remove all unused webpack assets on rebuild
+            cleanStaleWebpackAssets: true,
+            protectWebpackAssets: false
 })
     ]
 }

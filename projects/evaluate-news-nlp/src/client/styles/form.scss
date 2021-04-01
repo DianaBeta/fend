@@ -1,7 +1,8 @@
 form {
-    border: 1px solid #545454;
+    background-color: #b1b1b1;
     border-radius: 3px;
     padding: 40px;
+
 }
 
 input {
@@ -9,4 +10,9 @@ input {
     width: 100%;
     line-height: 16px;
     margin: 10px 0;
+}
+
+#submit{
+    background-color: aquamarine;
+    color:white;
 }
